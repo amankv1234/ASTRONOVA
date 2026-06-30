@@ -24,7 +24,7 @@ class XGBoostForecaster:
     """
     def __init__(
         self, 
-        input_size: int = 7, 
+        input_size: int = 15, 
         seq_len: int = 10,
         num_classes: int = 5,
         num_horizons: int = 4,
@@ -118,8 +118,15 @@ class XGBoostForecaster:
         regs_out = np.zeros((batch_size, self.num_horizons, 1))
         
         for i in range(self.num_horizons):
-            # Predict probabilities
-            probs_out[:, i, :] = self.classifiers[i].predict_proba(X_flat)
+            # Predict probabilities and map to 5 classes based on .classes_
+            probs = self.classifiers[i].predict_proba(X_flat)
+            if hasattr(self.classifiers[i], 'classes_'):
+                classes = self.classifiers[i].classes_
+                for c_idx, c in enumerate(classes):
+                    probs_out[:, i, int(c)] = probs[:, c_idx]
+            else:
+                probs_out[:, i, :probs.shape[1]] = probs
+                
             # Predict flux values
             regs_out[:, i, 0] = self.regressors[i].predict(X_flat)
             

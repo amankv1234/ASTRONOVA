@@ -38,7 +38,12 @@ async def get_prediction(
     """
     Generates multi-horizon probabilistic forecasts with physics-informed bounds.
     """
-    res = inference_engine.predict([], current_flux=current_flux)
+    dummy_features = np.zeros((1, 10, 15), dtype=np.float32)
+    if hasattr(request, 'features') and request.features:
+        try:
+            dummy_features = np.array([request.features], dtype=np.float32)
+        except: pass
+    res = inference_engine.predict(dummy_features, current_flux=current_flux)
     return res
 
 @router.get("/nowcast")
@@ -64,11 +69,12 @@ async def get_shi(
     """
     # Generate nowcast and predict states
     nowcast_res = nowcast_service.analyze_nowcast(current_flux)
-    pred_res = inference_engine.predict([], current_flux=current_flux)
+    dummy_features = np.zeros((1, 10, 15), dtype=np.float32)
+    pred_res = inference_engine.predict(dummy_features, current_flux=current_flux)
     
     # Calculate gradient proxy from nowcast
     gradient = current_flux * 0.05
-    probabilities = pred_res["prediction"]["probabilities"]
+    probabilities = pred_res["prediction"]["horizons"]["15m"]["probabilities"]
     
     shi = SolarHazardIndexCalculator.calculate_shi(
         probabilities=probabilities,

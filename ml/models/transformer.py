@@ -23,7 +23,7 @@ class SolarTransformer(nn.Module):
     """
     def __init__(
         self, 
-        input_size: int = 7, 
+        input_size: int = 15, 
         d_model: int = 64, 
         nhead: int = 4, 
         num_layers: int = 2, 

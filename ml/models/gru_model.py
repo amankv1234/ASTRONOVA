@@ -9,7 +9,7 @@ class GRUForecaster(nn.Module):
     """
     def __init__(
         self, 
-        input_size: int = 7, 
+        input_size: int = 15, 
         hidden_size: int = 64, 
         num_layers: int = 2, 
         num_classes: int = 5,
