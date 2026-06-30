@@ -1,5 +1,9 @@
 # 🌟 AstroNova — AI-Powered Solar Flare Forecasting System
 
+<p align="center">
+  <img src="ASTRONOVA.png" alt="AstroNova Banner" width="100%">
+</p>
+
 [![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/downloads/release/python-3120/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115+-green.svg)](https://fastapi.tiangolo.com/)
 [![PostgreSQL + TimescaleDB](https://img.shields.io/badge/TimescaleDB-2.x-orange.svg)](https://www.timescale.com/)
@@ -43,6 +47,7 @@ AstroNova ingests real-time X-ray flux telemetry from ISRO's **SOLEXS (Solar X-r
 - 🤖 **AI Copilot** with RAG-powered space weather Q&A
 - 🔔 **Multi-channel alert system** (email, webhook, SMS)
 - 📊 **Interactive dashboards** with explainable AI
+- 🌌 **Generative Solar Vision** (ConvLSTM + Diffusion) predicting future flare morphology and structure
 
 ### Key Capabilities
 
@@ -63,6 +68,20 @@ The AstroNova system has successfully completed its core ML and Scientific V2 Ve
 - **Explainable AI (XAI)**: ✅ Integrated Gradients and SHAP provide real-time feature importance and satisfy the strict physical consistency constraints.
 - **API & Inference**: ✅ FastAPI endpoints (`/predict`, `/nowcast`, `/shi`, `/simulate`) are fully operational, deterministic, and latency-optimized.
 - **Pending Production Requirements**: ⚠️ Docker configuration (`Dockerfile`/`docker-compose`) and structured JSON logging are currently being finalized.
+
+---
+
+## 🌌 Predictive Solar Vision (Generative AI)
+
+As the ultimate frontier of AstroNova's capabilities, we are integrating a cutting-edge **Generative Solar Vision** module. While time-series ML models predict *when* and *how intense* a flare will be, this Deep Learning vision module predicts *what it will look like*. 
+
+By combining **ConvLSTM** (Convolutional Long Short-Term Memory) networks for spatiotemporal dynamics with **Diffusion Models**, AstroNova is capable of taking current magnetogram and extreme ultraviolet (EUV) imaging data and forecasting the visual construction and morphology of upcoming solar flares. 
+
+**Workflow:**
+1. **Multimodal Ingestion**: Captures sequential EUV imagery (e.g., AIA 193Å, SDO) alongside real-time X-ray flux telemetry.
+2. **Spatiotemporal Forecasting**: A ConvLSTM network encodes the fluid dynamics and magnetic complexities of the active solar region.
+3. **Morphology Generation**: A guided Latent Diffusion Model decodes the spatiotemporal latent space to generate high-fidelity, predictive future frames of the solar surface.
+4. **Impact Visualization**: Provides visual warning maps indicating exactly where on the solar disk the eruption will emerge, allowing for high-precision coronal mass ejection (CME) trajectory estimations.
 
 ---
 
