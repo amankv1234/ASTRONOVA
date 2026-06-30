@@ -85,6 +85,17 @@ By combining **ConvLSTM** (Convolutional Long Short-Term Memory) networks for sp
 
 ---
 
+## 🔄 Dynamic Logging & Hindsight Data Engine
+
+To ensure continuous improvement and adaptation, AstroNova features a **Dynamic Logging and Data Collection Engine** designed to interface seamlessly with development tools like **Postman** and real-time production telemetry.
+
+**Key Features:**
+- **Dynamic API Logging**: All predictions, API requests (e.g., from Postman), and system telemetry are dynamically logged and routed directly into our structured Time-Series Database (TimescaleDB).
+- **The "Hindsight" Dataset**: This collected operational data acts as a continuous feedback loop. The system archives the real-time inputs alongside the actual observed solar outcomes to automatically curate a "Hindsight Dataset."
+- **Continuous Learning (Auto-Retraining)**: By leveraging this ever-growing Hindsight Dataset, AstroNova's ML and DL models can be periodically retrained. This allows the system to learn from its past predictions, correct drift, and progressively adapt to new solar cycles or anomalous weather events.
+
+---
+
 ## 🏗️ Architecture
 
 ```
